@@ -33,11 +33,9 @@ mongoose.connect(process.env.MONGODB_URI, {
 })
 .then(() => console.log('MongoDB connected'))
 .catch(err => console.error('MongoDB connection error:', err));
-app.get('/api/test', (req, res) => {
-    res.json({ message: 'DreamNex backend is working fine!' });
-});
+
 // Start the server
-const app = require('./app'); // import the app
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
