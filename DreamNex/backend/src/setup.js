@@ -1,4 +1,3 @@
-// ...existing code...
 /**
  * Simple Express server with MongoDB (Mongoose).
  * - Auth routes: /api/auth/signup, /api/auth/login
@@ -28,13 +27,14 @@ app.use(express.json());
 app.use(cors()); // Allow cross-origin requests (adjust origin in production)
 
 // --- Mongoose connection ---
-const MONGO_URI = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/dreamnex';
 mongoose
-  .connect(MONGO_URI, {
+  .connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    serverSelectionTimeoutMS: 5000, // Added timeout
+    socketTimeoutMS: 45000, // Added socket timeout
   })
-  .then(() => console.log('MongoDB connected'))
+  .then(() => console.log('MongoDB Atlas connected'))
   .catch((err) => {
     console.error('MongoDB connection error:', err.message);
     process.exit(1);
@@ -251,4 +251,3 @@ app.listen(PORT, () => {
 
 // Export app for testing or further composition
 module.exports = app;
-// ...existing code...
