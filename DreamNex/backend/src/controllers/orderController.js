@@ -16,7 +16,7 @@ exports.createOrder = async (req, res) => {
 };
 
 // Get all orders for a user
-exports.getUserOrders = async (req, res) => {
+exports.getAllOrders = async (req, res) => {
     try {
         const orders = await Order.find({ userId: req.params.userId });
         res.status(200).json(orders);
@@ -39,7 +39,7 @@ exports.getOrderById = async (req, res) => {
 };
 
 // Update an order status
-exports.updateOrderStatus = async (req, res) => {
+exports.updateOrder = async (req, res) => {
     try {
         const { status } = req.body;
         const updatedOrder = await Order.findByIdAndUpdate(req.params.id, { status }, { new: true });

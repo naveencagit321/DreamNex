@@ -1,7 +1,7 @@
 const OpenAI = require('../services/openaiService');
 
 // Function to handle AI requests
-exports.handleAIRequest = async (req, res) => {
+exports.generateContent = async (req, res) => {
     const { prompt } = req.body;
 
     if (!prompt) {

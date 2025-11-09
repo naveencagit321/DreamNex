@@ -1,10 +1,14 @@
 const express = require('express');
-const { signUp, login } = require('../controllers/authController');
-const { validateSignUp, validateLogin } = require('../middleware/authMiddleware');
+// ...other imports
+const { signup, login } = require('../controllers/authController');
+// ...other imports
 
 const router = express.Router();
 
-router.post('/signup', validateSignUp, signUp);
-router.post('/login', validateLogin, login);
+// Line 7 - NO validateSignup, lowercase 'signup'
+router.post('/signup', signup);
+
+// Line 8 - NO validateLogin
+router.post('/login', login);
 
 module.exports = router;
